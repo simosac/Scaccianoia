@@ -1,0 +1,99 @@
+════════════════════════════════════════════════════════════
+  GUIDA: Come condividere Noia con GitHub (gratuito)
+════════════════════════════════════════════════════════════
+
+COSA OTTIENI:
+  ✓ Un link da mandare agli amici per scaricare il catalogo
+  ✓ Aggiornamenti automatici quando aggiungi nuovi giochi
+  ✓ Funziona su Windows, Linux e macOS
+
+──────────────────────────────────────────────────────────
+  STEP 1 — Crea il repository su GitHub (una volta sola)
+──────────────────────────────────────────────────────────
+1. Vai su https://github.com e accedi al tuo account
+2. Clicca "+ New repository" (angolo in alto a destra)
+3. Nome repository: noia-games
+4. Scegli "Public" (così gli amici possono scaricare gratis)
+5. Clicca "Create repository"
+
+──────────────────────────────────────────────────────────
+  STEP 2 — Configura version.json
+──────────────────────────────────────────────────────────
+Apri il file version.json in questa cartella e sostituisci:
+   "github_user": "TUO_USERNAME"     ← metti il tuo username GitHub
+   "github_repo": "noia-games"       ← lascia così (o metti il nome che hai scelto)
+
+──────────────────────────────────────────────────────────
+  STEP 3 — Carica i file su GitHub
+──────────────────────────────────────────────────────────
+OPZIONE A (senza installare Git — più semplice):
+  1. Vai su https://github.com/TUO_USERNAME/noia-games
+  2. Clicca "uploading an existing file" o trascina i file
+  3. Carica TUTTA la cartella Noia (eccetto "Progetto Snake")
+
+OPZIONE B (con Git installato):
+  1. Apri il Prompt dei comandi nella cartella Noia
+  2. Esegui questi comandi uno alla volta:
+        git init
+        git add .
+        git commit -m "Prima versione"
+        git branch -M main
+        git remote add origin https://github.com/TUO_USERNAME/noia-games.git
+        git push -u origin main
+
+──────────────────────────────────────────────────────────
+  STEP 4 — Crea il primo Release (per gli aggiornamenti)
+──────────────────────────────────────────────────────────
+1. Vai su https://github.com/TUO_USERNAME/noia-games
+2. Sulla destra, clicca "Releases" → "Create a new release"
+3. Tag version: v1.0.0
+4. Title: Versione 1.0.0 — Snake
+5. Crea un file ZIP con SOLO questa struttura:
+      noia-update-v1.0.0.zip/
+      ├── version.json
+      └── games/
+          └── Snake/
+              └── snake.py
+6. Allegalo al Release (drag & drop nella sezione "Assets")
+7. Clicca "Publish release"
+
+──────────────────────────────────────────────────────────
+  STEP 5 — Condividi con gli amici
+──────────────────────────────────────────────────────────
+Manda a tutti il link:
+   https://github.com/TUO_USERNAME/noia-games
+
+Devono:
+  1. Scaricare l'intera cartella Noia (Code → Download ZIP)
+  2. Estrarre lo ZIP
+  3. Windows: doppio click su  Avvia.bat
+     Linux:   eseguire         bash avvia.sh
+     macOS:   eseguire         bash avvia.sh  (Terminal)
+
+NOTA SICUREZZA:
+  ► Windows potrebbe mostrare "Windows ha protetto il PC"
+    → Clicca "Ulteriori informazioni" → "Esegui comunque"
+  ► Questo avviso appare la prima volta con file .bat scaricati.
+    Non è un virus — è una misura preventiva di Windows.
+    Man mano che più persone scaricano il file, l'avviso sparirà.
+
+──────────────────────────────────────────────────────────
+  AGGIUNGERE UN NUOVO GIOCO (es. Tetris)
+──────────────────────────────────────────────────────────
+1. Crea la cartella  games/Tetris/  e mettici  tetris.py
+2. Aggiorna version.json:  "version": "1.1.0"
+3. Crea un nuovo ZIP aggiornamento:
+      noia-update-v1.1.0.zip/
+      ├── version.json          ← con "version": "1.1.0"
+      └── games/
+          ├── Snake/
+          │   └── snake.py
+          └── Tetris/
+              └── tetris.py
+4. Vai su GitHub → Releases → "Create a new release"
+5. Tag: v1.1.0 — allega il nuovo ZIP — pubblica
+
+→ Tutti i launcher degli amici mostreranno automaticamente
+  la notifica di aggiornamento al prossimo avvio!
+
+════════════════════════════════════════════════════════════
